@@ -16,20 +16,19 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 Route::get('/', function () {
-    
     return view('welcome');
 });
 
+Route::resource('berita', 'WebController');
 // Admin/Petugas
 Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function() {
         Route::get('/', 'DashboardController@index')->name('dashboard');
-
         Route::resource('pengaduans', 'PengaduanController');
-
         Route::resource('tanggapan', 'TanggapanController');
-
+        Route::resource('berita', 'BeritaController');
+        Route::get('berita/update', 'BeritaController@update');
         Route::get('masyarakat', 'AdminController@masyarakat');
         Route::resource('petugas', 'PetugasController');
 

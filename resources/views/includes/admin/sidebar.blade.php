@@ -1,10 +1,10 @@
 <!-- Desktop sidebar -->
 <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
   <div class="py-4 text-gray-500 dark:text-gray-400">
-    <img src="{{ asset('img/logo.svg')}}" alt=""
+    <img src="{{ asset('img/heros.png')}}" style="height: 60px;" alt=""
       class="inline-flex ml-3 items-center transform transition hover:scale-125 duration-300 ease-in-out" />
     <a class="ml-3 text-lg font-bold text-gray-800 dark:text-gray-200" href="/">
-      PENGKAT
+      Admin Panel
     </a>
     <ul class="mt-6">
       <li class="relative px-6 py-3">
@@ -67,6 +67,21 @@
               d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
           </svg>
           <span class="ml-4">Petugas</span>
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li class="relative px-6 py-3">
+        <span
+          class="{{ (request()->is('admin/berita')) ? 'absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg' : '' }} "
+          aria-hidden="true"></span>
+        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+          href="{{ route('berita.index')}}">
+          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" />
+          </svg>
+          <span class="ml-4">Berita</span>
         </a>
       </li>
     </ul>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PENGKAT | Pengaduan Masyarakat</title>
+  <title>Layanan Pengaduan Desa Argakencana Kecamatan Moilong Kabupaten Banggai Sulawesi Tengah</title>
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="icon" href="{{ asset('img/favicon.svg')}}">
@@ -19,10 +19,8 @@
 
   <nav class="flex items-center justify-between flex-wrap bg-blue-200 p-7 px-20">
     <div class="flex items-center flex-shrink-0 text-black mr-6">
-      <img src="{{ asset('img/logo.svg')}}" alt=""
-        class="transform transition hover:scale-125 duration-300 ease-in-out" />
       <span class="font-bold tracking-wider text-xl">
-        &nbsp PENGKAT</span>
+        &nbsp Layanan Pengaduan Desa Argakencana</span>
     </div>
     <div class="block lg:hidden">
       <button
@@ -40,6 +38,9 @@
         </a>
         <a href="#how" class="block mt-4 lg:inline-block lg:mt-0 text-black mr-4">
           Tata Cara
+        </a>
+        <a href="/berita" class="block mt-4 lg:inline-block lg:mt-0 text-black mr-4">
+          Berita
         </a>
       </div>
       <div>
@@ -61,9 +62,13 @@
   <div class="pt-24 px-16 bg-blue-200">
     <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
       <!--Left Col-->
-      <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left text-gray-800">
+      <div class="w-full md:w-2/5 text-center">
+        <img class="object-fill mx-36 transform transition hover:scale-110 duration-300 ease-in-out"
+          src="{{ asset('img/heros.png')}}" />
+      </div>
+      <div class="flex flex-col w-full md:w-3/5 justify-center items-start text-center md:text-left text-gray-800">
         <h1 class="my-4 text-4xl font-bold leading-tight">
-          Layanan Pengaduan Masyarakat Online
+          Layanan Pengaduan Masyarakat Online 
         </h1>
         <p class="leading-normal text-1xl mb-8">
           Sampaikan laporan masalah Anda di sini, kami akan memprosesnya
@@ -75,10 +80,7 @@
         </button>
       </div>
       <!--Right Col-->
-      <div class="w-full md:w-3/5 text-center">
-        <img class="object-fill mx-36 transform transition hover:scale-110 duration-300 ease-in-out"
-          src="{{ asset('img/hero.svg')}}" />
-      </div>
+      
     </div>
   </div>
 
@@ -157,8 +159,7 @@
   </div>
   <!-- Footer -->
   <footer class="text-center font-medium bg-blue-200 py-5">
-    © 2021 PENGKAT | By
-    <a href="https://madfariz.web.id/" class="text-blue-500" target="_blank">MadFariz</a>
+    © 2021 | Desa Argakencana Kecamatan Moilong Kabupaten Banggai Sulawesi Tengah
   </footer>
   @include('sweetalert::alert')
 </body>
