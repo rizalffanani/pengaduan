@@ -13,7 +13,7 @@ class WebController extends Controller
 {
     public function index() {
         return view('news',[
-            'news' => Berita::all(),
+            'news' => Berita::where('status','=', 'Y')->get(),
             'kat' => Katberita::all(),
         ]);
     }

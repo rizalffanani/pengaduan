@@ -64,6 +64,9 @@
     <div class="flex flex-wrap -mx-1 lg:-mx-4">
       <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4 bg-blue-200">
         <article class="overflow-hidden rounded-lg   text-gray-800" >
+          <br>
+          <img class="object-fill mx-16 transform transition hover:scale-110 duration-300 ease-in-out"
+          src="{{ asset('img/heros.png')}}" style="height:150px" />
           <h1 class="font-bold" style="font-size: 200%">Kategori</h1>
           <ul style="list-style-type:circle">
             @forelse ($kat as $row)
@@ -80,8 +83,8 @@
         <!-- Article -->
         @forelse ($news as $row)
         <article class="overflow-hidden rounded-lg shadow-lg  text-gray-800">
-          <img alt="Tulis"
-            class="block h-auto w-full lg:w-28 mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
+          <img alt="Tulis" style="width: 22rem;" 
+            class="block h-auto w-full mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
             src="{{ Storage::url($row->image) }}" />
           <header class="leading-tight p-2 md:p-4 text-left ">
             <h1 class="font-bold" style="font-size: 200%">{{ $row->judul }}</h1>

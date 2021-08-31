@@ -11,14 +11,22 @@ Berita Baru
       Forms
       <?php print_r(@$item->judul)?>
     </h2>
-
-
-
+     @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }} </li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
     <form action="{{ route($actions, @$item->id) }} " method="POST" enctype="multipart/form-data">
       @csrf
+      <input type="hidden" name="id_user" value="{{ Auth::user()->id}}">
+
       <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        @if(@$item)         
-          <input type="hidden" name="id" value="{{ @$item->id }}">   
+        @if(@$item)   
+          @method('PUT')        
         @endif
         <label class="block mt-4 text-sm">
           <span class="text-gray-700 dark:text-gray-400">Judul</span>
@@ -43,6 +51,13 @@ Berita Baru
           <span class="text-gray-700 dark:text-gray-400">Artikel</span>
           <textarea class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
            name="artikel">{{ @$item->artikel }}</textarea>
+        </label>
+
+        <label for="image" class="block mt-4 text-sm">
+          <span class="text-gray-700 dark:text-gray-400">Foto</span>
+          <input
+            class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+            type="file" value="{{ old('image')}}" name="image" />
         </label>
 
         <label class="block mt-4 text-sm">

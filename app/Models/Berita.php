@@ -12,7 +12,7 @@ class Berita extends Model
     use HasFactory;
 
     protected $fillable = [
-        'judul', 'views','artikel', 'id_kategori', 'user_id', 'created_at', 'status'
+        'judul', 'views','artikel', 'id_kategori', 'user_id','image', 'created_at', 'status'
     ];
 
     protected $hidden = [

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class BeritaController extends Controller
@@ -59,17 +61,21 @@ class BeritaController extends Controller
         'kategori' => 'required|string|max:15',
         'artikel' => 'required|string|max:255',
         'status' => 'required|string|max:15',
-        
         ]);
 
         $user = $request->all();
-
+        if($request->hasFile('image')){ 
+            $foto = $request->file('image')->store('assets/berita', 'public');
+        }else{
+            $foto = "assets/berita/news.png";
+        }
         $user = Berita::create([
         'judul' => $request->judul,
         'id_kategori' => $request->kategori,
         'artikel' => $request->artikel,
         'status' => $request->status,
-        'user_id' => '1',
+        'user_id' => $request->id_user,
+        'image' => $foto,
         ]);
 
         Alert::success('Berhasil', 'Berita baru ditambahkan');
@@ -114,14 +120,27 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $share = Berita::find($id)->update([
-            'judul' => $request->judul,
-            'id_kategori'=> $request->kategori,
-            'artikel'=> $request->artikel,
-            'status'=> $request->status
+        $request->validate([
+        'judul' => 'required|string|max:50',
+        'kategori' => 'required|string|max:15',
+        'artikel' => 'required|string|min:5',
+        'status' => 'required|string|max:15',
         ]);
+
+        $flight = Berita::find($id);
+
+        $flight->judul = $request->judul;
+        $flight->id_kategori = $request->kategori;
+        $flight->artikel = $request->artikel;
+        $flight->status = $request->status;
+        $flight->user_id = $request->id_user;
+        if($request->hasFile('image')){ 
+            $flight->image = $request->file('image')->store('assets/berita', 'public');
+        }
+        $flight->save();
           
-        return back();
+        Alert::success('Berhasil', 'Berita dirubah');
+        return redirect('admin/berita');
     }
 
     /**

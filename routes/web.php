@@ -28,7 +28,7 @@ Route::prefix('admin')
         Route::resource('pengaduans', 'PengaduanController');
         Route::resource('tanggapan', 'TanggapanController');
         Route::resource('berita', 'BeritaController');
-        Route::get('berita/update', 'BeritaController@update');
+        Route::resource('kategori', 'KatberitaController');
         Route::get('masyarakat', 'AdminController@masyarakat');
         Route::resource('petugas', 'PetugasController');
 
