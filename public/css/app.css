@@ -15063,6 +15063,20 @@ select {
   padding-bottom: 5rem;
 }
 
+@media screen and (max-width: 500px) {
+  .px-20 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .mx-36{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .text-xl{
+    font-size: 0.90em;
+  }
+}
+
 .px-20 {
   padding-left: 5rem;
   padding-right: 5rem;

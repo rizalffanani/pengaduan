@@ -114,7 +114,7 @@
   </div>
   <!-- Footer -->
   <footer class="text-center font-medium bg-blue-200 py-5">
-    © 2021 | Desa Argakencana Kecamatan Moilong Kabupaten Banggai Sulawesi Tengah
+    <h4>© 2021 | Desa Argakencana Kecamatan Moilong Kabupaten Banggai Sulawesi Tengah</h4>
   </footer>
   @include('sweetalert::alert')
 </body>
