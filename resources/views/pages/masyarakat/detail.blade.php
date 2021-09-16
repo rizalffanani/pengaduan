@@ -27,6 +27,7 @@ Data Pengaduan
               class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
               <th class="px-4 py-3">Foto</th>
               <th class="px-4 py-3">Tanggal</th>
+              <th class="px-4 py-3">Kategori</th>
               <th class="px-4 py-3">Status</th>
               <th class="px-4 py-3">Aksi</th>
             </tr>
@@ -66,8 +67,10 @@ Data Pengaduan
                   {{ $item->status }}
                 </span>
               </td>
-
               @endif
+              <td class="px-4 py-3 text-sm">
+                {{ $item->kateg->kategori }}
+              </td>
               <td>
                 <a href="{{ route('pengaduan.show', $item->id)}} "
                   class="flex items-center justify-between  text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"

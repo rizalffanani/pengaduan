@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 use App\Models\User;
+use App\Models\Katpeng;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
@@ -21,10 +22,11 @@ class MasyarakatController extends Controller
      */
     public function index()
     {
+        $data = Katpeng::all();
         $user = Auth::user()->nik;
         // dd($user);
 
-        return view('pages.masyarakat.index', ['liat'=>$user]);
+        return view('pages.masyarakat.index', ['items' => $data,'liat'=>$user]);
     }
 
     /**
@@ -47,6 +49,7 @@ class MasyarakatController extends Controller
     {
         $request->validate([
         'description' => 'required',
+        'id_katpeng' => 'required',
         'image' => 'required',
         ]);
         

@@ -34,6 +34,7 @@
       <h6>Nama : {{ $pengaduan->name }}</h6>
       <h6>NIK : {{ $pengaduan->user_nik }}</h6>      
       <h6>No. Telepon : {{ $pengaduan->user->phone }}</h6>      
+      <h6>Kategori: {{ $pengaduan->kateg->kategori }}</h6>      
     </div>
 
     <table class="table table-bordered">

@@ -34,6 +34,17 @@ Dashboard
             rows="8" type="text" placeholder="Isi laporan Anda" value="{{ old('description')}}"
             name="description"></textarea>
         </label>
+        <label class="block text-sm">
+          <span class="text-gray-700 dark:text-gray-400">Kategori</span>
+          <select
+            class="block w-full text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+            name="id_katpeng">
+            <option value="">Pilih..</option>
+            @foreach($items as $row)
+              <option value="{{ $row->id }}" {{ @$row->id === @$item->id_kategori ? "selected" : "" }}>{{ $row->kategori }}</option>
+            @endforeach
+          </select>
+        </label>
 
         <label for="image" class="block mt-4 text-sm">
           <span class="text-gray-700 dark:text-gray-400">Foto</span>

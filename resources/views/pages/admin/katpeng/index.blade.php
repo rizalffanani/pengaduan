@@ -1,17 +1,22 @@
 @extends('layouts.admin')
 
 @section('title')
-Data Pengaduan
+Kategori
 @endsection
 
 @section('content')
 <main class="h-full pb-16 overflow-y-auto">
   <div class="container grid px-6 mx-auto">
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-      Pengaduan
+      Kategori
     </h2>
 
-
+    <div class="my-4 mb-6">
+      <a href="{{ route('katpeng.create')}} "
+        class="px-5 py-3  font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+        Tambah Kategori 
+      </a>
+    </div>
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
       <div class="w-full overflow-x-auto">
         @if ($errors->any())
@@ -27,65 +32,32 @@ Data Pengaduan
           <thead>
             <tr
               class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-              <th class="px-4 py-3">Nama</th>
+              <th class="px-4 py-3">No</th>
               <th class="px-4 py-3">Kategori</th>
-              <th class="px-4 py-3">Tanggal</th>
-              <th class="px-4 py-3">Status</th>
               <th class="px-4 py-3">Aksi</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-            @forelse ($items as $item)
-            <tr class="text-gray-700 dark:text-gray-400 ">
+            @php ($a = 1)
+            @forelse ($data as $row)
+            <tr class="text-gray-700 dark:text-gray-400">
               <td class="px-4 py-3 text-sm">
-                {{ $item->name }}
-              </td>
-              <td class="px-4 py-3 text-sm">
-                {{ $item->kateg->kategori }}
+                {{ $a }}
               </td>
               <td class="px-4 py-3 text-sm">
-                {{ $item->created_at->format('l, d F Y - H:i:s') }}
+                {{ $row->kategori }}
               </td>
-              @if($item->status =='Belum di Proses')
-              <td class="px-4 py-3 text-xs">
-                <span
-                  class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-md dark:text-red-100 dark:bg-red-700">
-                  {{ $item->status }}
-                </span>
-              </td>
-              @elseif ($item->status =='Sedang di Proses')
-              <td class="px-4 py-3 text-xs">
-                <span
-                  class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-md dark:text-white dark:bg-orange-600">
-                  {{ $item->status }}
-                </span>
-              </td>
-              @else
-              <td class="px-4 py-3 text-xs">
-                <span
-                  class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-md dark:bg-green-700 dark:text-green-100">
-                  {{ $item->status }}
-                </span>
-              </td>
-
-
-              @endif
-
               <td class="px-4 py-3">
                 <div class="flex items-center space-x-4 text-sm">
-
-                  <a href="{{ route('pengaduans.show', $item->id)}} "
+                  <a href="{{ route('katpeng.edit', $row->id)}} "
                     class="flex items-center justify-between  text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                    aria-label="Detail">
+                    aria-label="Edit">
 
-                    <svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                   <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M15.671 12.779l-7.196-6.168c0.335-0.63 0.525-1.348 0.525-2.111 0-2.485-2.015-4.5-4.5-4.5-0.455 0-0.893 0.068-1.307 0.193l2.6 2.6c0.389 0.389 0.389 1.025 0 1.414l-1.586 1.586c-0.389 0.389-1.025 0.389-1.414 0l-2.6-2.6c-0.125 0.414-0.193 0.852-0.193 1.307 0 2.485 2.015 4.5 4.5 4.5 0.763 0 1.482-0.19 2.111-0.525l6.168 7.196c0.358 0.418 0.969 0.441 1.358 0.052l1.586-1.586c0.389-0.389 0.365-1-0.052-1.358z" clip-rule="evenodd"></path>
                     </svg>
                   </a>
-                  <form action="{{ route('pengaduans.destroy', $item->id)}}" method="POST">
+                  <!-- <form action="{{ route('kategori.destroy', $row->id)}}" method="POST">
                     @csrf
                     @method('delete')
                     <button
@@ -97,11 +69,11 @@ Data Pengaduan
                           clip-rule="evenodd"></path>
                       </svg>
                     </button>
-                  </form>
+                  </form> -->
                 </div>
               </td>
-
             </tr>
+            @php ($a++)
             @empty
             <tr>
               <td colspan="7" class="text-center text-gray-400">

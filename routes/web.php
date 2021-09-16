@@ -27,6 +27,7 @@ Route::prefix('admin')
     ->group(function() {
         Route::get('/', 'DashboardController@index')->name('dashboard');
         Route::resource('pengaduans', 'PengaduanController');
+        Route::resource('katpeng', 'KatpengController');
         Route::resource('tanggapan', 'TanggapanController');
         Route::resource('berita', 'BeritaController');
         Route::resource('kategori', 'KatberitaController');

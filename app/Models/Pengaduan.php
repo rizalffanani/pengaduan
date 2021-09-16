@@ -12,7 +12,7 @@ class Pengaduan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description', 'image', 'status', 'user_nik', 'user_id'
+        'name', 'description', 'image', 'status', 'user_nik', 'user_id', 'id_katpeng'
     ];
 
     protected $hidden = [
@@ -21,6 +21,10 @@ class Pengaduan extends Model
 
     public function user() {
         return $this->belongsTo(User::class, 'user_nik', 'nik');
+    }
+
+    public function kateg() {
+        return $this->belongsTo(Katpeng::class, 'id_katpeng', 'id');
     }
 
     public function details() {
