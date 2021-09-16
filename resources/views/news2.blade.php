@@ -70,43 +70,63 @@
           <br>
           <img class="object-fill mx-16 transform transition hover:scale-110 duration-300 ease-in-out"
           src="{{ asset('img/heros.png')}}" style="height:150px" />
-          <h1 class="font-bold" style="font-size: 200%">Kategori</h1>
-          <ul style="list-style-type:circle">
-            @forelse ($kat as $row)
-            <li>{{ $row->kategori }}</li>
-            @empty
-            <li></li>
-            @endforelse
-          </ul>
         </article>
       </div>
       <!-- Column -->
       
       <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-3/4">
         <!-- Article -->
-        @forelse ($news as $row)
+        @forelse ($lem as $row)
         <article class="overflow-hidden rounded-lg shadow-lg  text-gray-800">
-          <img alt="Tulis" style="width: 22rem;" 
-            class="block h-auto w-full mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
-            src="{{ Storage::url($row->image) }}" />
           <header class="leading-tight p-2 md:p-4 text-left ">
-            <h1 class="font-bold" style="font-size: 200%">{{ $row->judul }}</h1>
-            <p>
-              <span style="color:indianred;">Kategori : {{ $row->kateg->kategori }}</span>
-              <span style="color:skyblue;float: right;">{{ $row->updated_at }}</span>
-            </p>
+            <h1 class="font-bold" style="font-size: 200%">{{ $row->nama_lembaga }}</h1>
             <p class="text-grey-darker text-sm py-4">
-              {{ @$a=\Illuminate\Support\Str::limit($row->artikel, 200, '...') }}
-              @if (strlen(strip_tags($row->artikel)) > 200)
-                <a href="{{ url('login')}}" style="color:indianred;">Read More!</a>
-              @endif
+              SUSUNAN KEPENGURUSAN
+              <table border="1" cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td style="height:28px; width:43px">
+                      <p><strong>No</strong></p>
+                    </td>
+                    <td style="height:28px; width:293px">
+                      <p><strong>Nama</strong></p>
+                    </td>
+                    <td style="height:28px; width:284px">
+                      <p><strong>Jabatan</strong></p>
+                    </td>
+                  </tr>
+                  @php ($a = 1)
+                  @forelse ($peng as $rows)
+                    @if($row->id ==$rows->id_lembaga)
+                      <tr>
+                        <td style="width:43px">
+                          <p>{{ $a }}</p>
+                        </td>
+                        <td style="width:293px">
+                          <p>{{ $rows->nama }}</p>
+                        </td>
+                        <td style="width:284px">
+                          <p>{{ $rows->jabatan }}</p>
+                        </td>
+                      </tr>
+                      @php ($a++)
+                    @endif                  
+                  @empty
+                  <tr>
+                    <td colspan="7" class="text-center text-gray-400">
+                      Tidak Ada Pengurus
+                    </td>
+                  </tr>
+                  @endforelse
+                </tbody>
+              </table>
             </p>
           </header>
         </article>
         @empty
         <tr>
           <td colspan="7" class="text-center text-gray-400">
-            Tidak Ada Berita
+            Tidak Ada Lembaga
           </td>
         </tr>
         @endforelse

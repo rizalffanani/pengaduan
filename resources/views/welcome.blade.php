@@ -39,8 +39,11 @@
         <a href="#how" class="block mt-4 lg:inline-block lg:mt-0 text-black mr-4">
           Tata Cara
         </a>
-        <a href="/berita" class="block mt-4 lg:inline-block lg:mt-0 text-black mr-4">
+        <a href="/beritaw" class="block mt-4 lg:inline-block lg:mt-0 text-black mr-4">
           Berita
+        </a>
+        <a href="/pengurusw" class="block mt-4 lg:inline-block lg:mt-0 text-black mr-4">
+          Lembaga
         </a>
       </div>
       <div>

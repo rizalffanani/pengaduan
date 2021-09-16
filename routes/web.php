@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 
 Route::resource('beritaw', 'WebController');
+Route::get('pengurusw', 'WebController@index2');
 // Admin/Petugas
 Route::prefix('admin')
     ->middleware(['auth', 'admin'])
@@ -31,7 +32,7 @@ Route::prefix('admin')
         Route::resource('kategori', 'KatberitaController');
         Route::resource('lembaga', 'LembagaController');
         Route::resource('pengurus', 'PengurusController');
-        Route::get('pengurus/index2/{id}', 'PengurusController@index2')->name('peng');;
+        Route::get('pengurus/index2/{id}', 'PengurusController@index2')->name('peng');
         Route::get('pengurus/create2/{id}', 'PengurusController@create2')->name('pengc');
         Route::get('pengurus/edit2/{peng}/{id}', 'PengurusController@edit2')->name('pengd');
         Route::post('pengurus/destroy2/{peng}/{id}', 'PengurusController@destroy2')->name('pengx');
