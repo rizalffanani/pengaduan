@@ -58,8 +58,8 @@ class BeritaController extends Controller
     {
         $request->validate([
         'judul' => 'required|string|max:50',
-        'kategori' => 'required|string|max:15',
-        'artikel' => 'required|string|max:255',
+        'kategori' => 'required|string|max:50',
+        'artikel' => 'required|string',
         'status' => 'required|string|max:15',
         ]);
 
@@ -122,8 +122,8 @@ class BeritaController extends Controller
     {
         $request->validate([
         'judul' => 'required|string|max:50',
-        'kategori' => 'required|string|max:15',
-        'artikel' => 'required|string|min:5',
+        'kategori' => 'required|string|max:50',
+        'artikel' => 'required|string',
         'status' => 'required|string|max:15',
         ]);
 

@@ -14,6 +14,14 @@ Laporan
       </a>
     </div>
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+
+      <div class="row">
+        <div class="col-md-8">
+           <canvas id="myChart2"></canvas>
+        </div>
+      </div>
+      <br>
+      <br>
       <div class="w-full overflow-x-auto">
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -88,8 +96,58 @@ Laporan
           </tbody>
         </table>
       </div>
+      
+
     </div>
 
   </div>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<script>
+      var departmentsNames = [];
+      var totalDepartments = [];
+
+      @foreach ($departmentsPurchases as $departmentsPurchase)
+          departmentsNames.push('{{$departmentsPurchase->katpeng}}');
+          totalDepartments.push('{{$departmentsPurchase->jml}}');
+      @endforeach      
+
+      var ctx2 = document.getElementById('myChart2').getContext('2d');
+      var ctx_2 = document.getElementById("myChart2");
+
+      var myChart = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+              labels: departmentsNames,
+              datasets: [{
+                  label: 'Jumlah Pengaduan/kategori',
+                  data: totalDepartments,
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+</script>
 @endsection

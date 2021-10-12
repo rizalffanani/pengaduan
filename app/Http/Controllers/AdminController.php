@@ -41,9 +41,12 @@ class AdminController extends Controller
     public function laporan() {
 
         $pengaduan = Pengaduan::all();
-
+        $departmentsPurchases = Pengaduan::select(['pengaduans.id_katpeng as idkatpeng','katpengs.kategori as katpeng', DB::raw('COUNT(pengaduans.id_katpeng) as jml')])
+                                    ->join('katpengs','pengaduans.id_katpeng','katpengs.id')
+                                    ->groupBy('idkatpeng')->get();
         return view('pages.admin.laporan',[
-            'pengaduan' => $pengaduan
+            'pengaduan' => $pengaduan,
+            'departmentsPurchases' => $departmentsPurchases
         ]);
     }
 
